@@ -142,7 +142,7 @@ body {
     border-style: none;
 }
 
-.cart-btn:active {
+.cart-btn:hover {
     cursor: pointer;
     background-color: var(--clr-neutral-h);
 }

@@ -101,6 +101,7 @@ body {
     background-color: hsla(178, 100%, 50%, 50%);
     z-index: 1;
     opacity: 0;
+	transition: all .2s ease;
 }
 
 .view-hover:hover {
