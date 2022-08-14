@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
+
+:root {
+    --clr-primary: hsl(25, 97%, 53%);
+    --clr-neutral-white: hsl(0, 0%, 100%);
+    --clr-neutral-grey-300: hsl(217, 12%, 63%);
+    --clr-neutral-grey-400: hsl(216, 12%, 54%);
+    --clr-neutral-blue-700: hsl(213, 19%, 18%);
+    --clr-neutral-blue-800: hsl(216, 12%, 8%);
+
+    --fs-p: .9375rem;
+
+    --ff-primary: 'Overpass', sans-serif;
+
+    --fw-400: 400;
+    --fw-700: 700;
+}
+
+/* Utility classes */
+.clr-neutral-blue-800-bg {
+    background-color: var(--clr-neutral-blue-800);
+}
+
+.clr-neutral-blue-700-bg {
+    background-color: var(--clr-neutral-blue-700);
+}
+
+.clr-neutral-white {
+    color: var(--clr-neutral-white);
+}
+
+.clr-neutral-grey-300 {
+    color: var(--clr-neutral-grey-300);
+}
+
+.fs-p {
+    font-size: var(--fs-p);
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+/* Body classes */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--ff-primary);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 250px;
+    margin: auto;
+    padding: 2em;
+    border-radius: 25px;
+}
+
+.star {
+    display: flex;
+}
+
+.star-bg {
+    padding: .5em .5em;
+    border-radius: 100px;
+    background-color: hsl(213, 19%, 21%);
+}
+
+#rating-score-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.text-container {
+    margin-bottom: 1em;
+}
+
+.rating-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rating-container ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.rating-container li {
+    padding: .6em 1em;
+    border-radius: 100px;
+    background-color: hsl(213, 19%, 21%);
+}
+
+.rating-container li:hover {
+    color: var(--clr-neutral-white) !important;
+    background-color: var(--clr-primary) !important;
+    cursor: pointer;
+}
+
+.rating-container button {
+    width: 100%;
+    padding: .75em 0em;
+    border: none;
+    border-radius: 50px;
+    background-color: var(--clr-primary);
+    letter-spacing: 2.5px;
+}
+
+.rating-container button:hover {
+    background-color: var(--clr-neutral-white);
+    color: var(--clr-primary);
+    cursor: pointer;
+}
+
+.rating-container button:active {
+    transform: scale(1.01);
+}
