@@ -1,6 +1,6 @@
 'use strict';
 
-var tipPct = 0;
+var tipPct = -1;
 
 function peopleValid(_this) {
     const invalidPeople = document.getElementById('invalid-people');
@@ -31,7 +31,7 @@ function calculateAmounts() {
     let noOfPeople = document.getElementById('no-of-people').value;
     noOfPeople = parseInt(noOfPeople);
 
-    if (noOfPeople != 0 && noOfPeople != null && tipPct > 0) {
+    if (noOfPeople != 0 && noOfPeople != null && tipPct >= 0) {
         document.getElementById('tip-dollars').innerHTML = '&dollar;' + parseFloat((tipPct/100*billAmount)/noOfPeople).toFixed(2);
         document.getElementById('total-dollars').innerHTML = '&dollar;' + ((billAmount + tipPct/100*billAmount) / noOfPeople).toFixed(2);
     }
@@ -52,17 +52,20 @@ function focusBtn(_this) {
     document.getElementById('btn25').style.color = 'hsl(0, 0%, 100%)';
     document.getElementById('btn50').style.backgroundColor = 'hsl(183, 100%, 15%)';
     document.getElementById('btn50').style.color = 'hsl(0, 0%, 100%)';
-    _this.style.backgroundColor = 'hsl(172, 67%, 45%)';
-    _this.style.color = 'hsl(183, 100%, 15%)';
+    if (_this != null) {
+        _this.style.backgroundColor = 'hsl(172, 67%, 45%)';
+        _this.style.color = 'hsl(183, 100%, 15%)';
 
-    tipPct = _this.innerHTML;
-    tipPct = parseInt(tipPct.slice(0, -1));
-    calculateAmounts();
+        tipPct = _this.innerHTML;
+        tipPct = parseInt(tipPct.slice(0, -1));
+        calculateAmounts();
+    }
 }
 
 function customTip(_this) {
     if (_this.value > 0) {
         tipPct = _this.value;
+        focusBtn(null);
         calculateAmounts();
     } 
 }
