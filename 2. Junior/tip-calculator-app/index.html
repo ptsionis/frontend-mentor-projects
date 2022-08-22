@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Frontend Mentor | Tip calculator app</title>
+    <script src="./js/main.js"></script>
+  </head>
+  <body>
+    <img src="./images/logo.svg" alt="Logo" id="logo">
+    <div class="container">
+      <div class="left-container">
+        <form method="post">
+          <div class="bill-container">
+            <label for="bill">Bill</label>
+            <img src="./images/icon-dollar.svg" alt="">
+            <input type="text" placeholder="0" autocomplete="off" id="bill-input">
+          </div>
+          <div class="tip-pct-container">
+            <label for="tip-pct">Select Tip %</label>
+            <div class="pct-btn-container">
+              <button type="button" class="pct-btn" id="btn5" onclick="focusBtn(this)">5%</button>
+              <button type="button" class="pct-btn" id="btn10" onclick="focusBtn(this)">10%</button>
+              <button type="button" class="pct-btn" id="btn15" onclick="focusBtn(this)">15%</button>
+              <button type="button" class="pct-btn" id="btn25" onclick="focusBtn(this)">25%</button>
+              <button type="button" class="pct-btn" id="btn50" onclick="focusBtn(this)">50%</button>
+              <input type="text" placeholder="Custom" autocomplete="off" id="custom-tip" onkeyup="customTip(this)">
+            </div>
+          </div>
+          <div class="no-of-people">
+            <div class="no-of-people-text">
+              <label for="no-of-people">Number of People</label>
+              <span id="invalid-people">Can't be zero</span>
+            </div>
+            <img src="./images/icon-person.svg" alt="">
+            <input type="text" placeholder="0" autocomplete="off" id="no-of-people" onkeyup="peopleValid(this); calculateAmounts();">
+          </div>
+        </form>
+      </div>
+      <div class="right-container">
+        <div class="calculated-amounts">
+          <div class="tip-amount">
+            <div class="right-text">
+              <h4>Tip Amount</h4>
+              <p>/ person</p>
+            </div>
+            <p class="dollars" id="tip-dollars">&dollar;0.00</p>
+          </div>
+          <div class="total">
+            <div class="right-text">
+              <h4>Total</h4>
+              <p>/ person</p>
+            </div>
+            <p class="dollars" id="total-dollars">&dollar;0.00</p>
+          </div>
+        </div>
+        <button type="button" id="reset" onclick="resetForm(); focusBtn(null);">RESET</button>
+      </div>
+    </div>
+  </body>
+</html>
