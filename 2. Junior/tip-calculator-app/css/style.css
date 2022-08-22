@@ -197,3 +197,20 @@ input[type=text]:hover {
     cursor: pointer;
     background-color: var(--clr-background);
 }
+
+@media screen and (max-width:800px) {
+    .container, .left-container, .right-container {
+        width: 100%;
+        height: auto;
+        float: none;
+    }
+
+    .no-of-people img {
+        margin-top: 70px;
+    }
+
+    .dollars {
+        font-size: var(--fs-form-input);
+    }
+
+}

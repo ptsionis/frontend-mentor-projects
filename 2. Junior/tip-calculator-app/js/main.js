@@ -63,9 +63,15 @@ function focusBtn(_this) {
 }
 
 function customTip(_this) {
-    if (_this.value > 0) {
-        tipPct = _this.value;
-        focusBtn(null);
+    if (_this.value == '') {
+        tipPct = 0;
         calculateAmounts();
-    } 
+    }
+    else {
+        if (_this.value >= 0) {
+            tipPct = _this.value;
+            focusBtn(null);
+            calculateAmounts();
+        }
+    }
 }
