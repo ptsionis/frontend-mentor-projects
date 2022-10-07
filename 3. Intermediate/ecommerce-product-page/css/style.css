@@ -148,10 +148,6 @@ main {
     border-radius: 10px;
 }
 
-#thumbnail1 {
-    outline: 2px solid var(--orange);
-}
-
 .overlayThumbnail {
     display: none;
     background-color: var(--pale-orange);
