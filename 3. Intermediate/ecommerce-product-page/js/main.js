@@ -15,8 +15,13 @@ const thumbnail2 = document.getElementById("thumbnail2");
 const thumbnail3 = document.getElementById("thumbnail3");
 const thumbnail4 = document.getElementById("thumbnail4");
 
+const lightboxContainer = document.getElementById("lightboxContainer");
+const lightboxImage = document.getElementById("lightboxImage");
+
 let tempProductCart = 0;
 let productCart = 0;
+
+var lightboxIndex = 1;
 
 function minusProductCart() {
     if (tempProductCart>0) {
@@ -34,7 +39,7 @@ function updateCart() {
     productCart += tempProductCart;
     tempProductCart = 0;
     productCartCounter.innerHTML = tempProductCart;
-    
+
     if (productCart==0) {
         cartCounter.style.display = 'none';
     }
@@ -64,6 +69,49 @@ function showOutline(imageThumbnail) {
 
 function changeMainImage(url) {
     mainImage.src = url;
+    updateCarouselIndex(mainImage);
+}
+
+function updateCarouselIndex(imageObj) {
+    let tempImageSrc = imageObj.src;
+    let tempIndex = tempImageSrc.substr(-5, 1);
+    lightboxIndex = parseInt(tempIndex);
+}
+
+function showLightbox() {
+    lightboxContainer.style.display = 'block';
+    lightboxImage.src = mainImage.src;
+}
+
+function closeLightbox() {
+    lightboxContainer.style.display = 'none';
+}
+
+function changeLightbox(url) {
+    lightboxImage.src = url;
+    updateCarouselIndex(lightboxImage);
+}
+
+function previousLightbox() {
+    if (lightboxIndex!=1) {
+        lightboxIndex--;
+        changeLightbox("./images/image-product-"+lightboxIndex+".jpg");
+    }
+    else {
+        lightboxIndex = 4;
+        changeLightbox("./images/image-product-"+lightboxIndex+".jpg");
+    }
+}
+
+function nextLightbox() {
+    if (lightboxIndex!=4) {
+        lightboxIndex++;
+        changeLightbox("./images/image-product-"+lightboxIndex+".jpg");
+    }
+    else {
+        lightboxIndex = 1;
+        changeLightbox("./images/image-product-"+lightboxIndex+".jpg");
+    }
 }
 
 showThumbnail(overlayThumbnail1);
