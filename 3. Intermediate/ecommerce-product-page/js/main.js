@@ -18,11 +18,39 @@ const thumbnail4 = document.getElementById("thumbnail4");
 const lightboxContainer = document.getElementById("lightboxContainer");
 const lightboxImage = document.getElementById("lightboxImage");
 
+const cartDetailsObj = document.getElementById("cartDetails");
+const emptyCartObj = document.getElementById("emptyCart");
+const cartDetailsProductObj = document.getElementById("cartDetailsProduct");
+const productCounterObj = document.getElementById("productCounter");
+const finalPriceObj = document.getElementById("finalPrice");
+const chekcoutButtonObj = document.getElementById("chekcoutButton");
+
+//Used in Add to checkout button
 let tempProductCart = 0;
 let productCart = 0;
 
-var lightboxIndex = 1;
+//Used for the lightbox carousel
+let lightboxIndex = 1;
 
+//Used in cart details div
+let finalPrice = 0;
+
+//Used to know if cart details should be opened or closed when the cart icon at header is clicked
+let showCartSwitch = 0;
+
+//Turns cart details div on or off
+function showCartDetails() {
+    if(showCartSwitch) {
+        cartDetailsObj.style.display = 'none';
+        showCartSwitch = 0;
+    }
+    else {
+        cartDetailsObj.style.display = 'block';
+        showCartSwitch = 1;
+    }
+}
+
+//Decrement of add to cart product counter
 function minusProductCart() {
     if (tempProductCart>0) {
         tempProductCart--;
@@ -30,22 +58,43 @@ function minusProductCart() {
     }
 }
 
+//Increment of add to cart product counter
 function plusProductCart() {
     tempProductCart++;
     productCartCounter.innerHTML = tempProductCart;
 }
 
+//Gets the number of add to cart counter and adds it to the total product counter of the cart icon header
 function updateCart() {
-    productCart += tempProductCart;
+    productCart += parseInt(tempProductCart);
+    finalPrice += tempProductCart * 125;
     tempProductCart = 0;
     productCartCounter.innerHTML = tempProductCart;
 
     if (productCart==0) {
         cartCounter.style.display = 'none';
+        cartDetailsProductObj.style.display = 'none';
+        emptyCartObj.style.display = 'block';
+        chekcoutButtonObj.style.display = 'none';
     }
     else {
         cartCounter.style.display = 'block';
+        cartDetailsProductObj.style.display = 'flex';
+        emptyCartObj.style.display = 'none';
+        chekcoutButtonObj.style.display = 'block';
     }
+    cartCounter.innerHTML = productCart;
+    productCounterObj.innerHTML = productCart;
+    finalPriceObj.innerHTML = '&dollar;' + finalPrice.toFixed(2);
+}
+
+function clearCart() {
+    productCart = 0;
+    finalPrice = 0;
+    cartCounter.style.display = 'none';
+    cartDetailsProductObj.style.display = 'none';
+    emptyCartObj.style.display = 'block';
+    chekcoutButtonObj.style.display = 'none';
     cartCounter.innerHTML = productCart;
 }
 
